@@ -8,7 +8,7 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "MyLibrary",
+            name: "MyLibrary", type: .dynamic,   
             targets: ["MyLibrary"]),
     ],
     dependencies: [
@@ -21,6 +21,10 @@ let package = Package(
         .target(
             name: "MyLibrary",
             dependencies: []),
+        .binaryTarget(
+            name: "LocPush",
+            path: "./LocPush.xcframework"
+        ),
         .testTarget(
             name: "MyLibraryTests",
             dependencies: ["MyLibrary"]),
