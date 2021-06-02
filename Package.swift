@@ -5,11 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "MyLibrary",
+    platforms: [.iOS(.v10)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MyLibrary", type: .dynamic,   
-            targets: ["MyLibrary"]),
+            targets: ["MyLibrary","LocPush"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,12 +22,12 @@ let package = Package(
         .target(
             name: "MyLibrary",
             dependencies: []),
-        .binaryTarget(
-            name: "LocPush",
-            path: "./LocPush.xcframework"
-        ),
         .testTarget(
             name: "MyLibraryTests",
             dependencies: ["MyLibrary"]),
+        .binaryTarget(
+                    name: "LocPush",
+                    path: "./LocPush.xcframework"
+                )
     ]
 )
